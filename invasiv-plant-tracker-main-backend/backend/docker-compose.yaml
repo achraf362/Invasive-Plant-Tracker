@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend.dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - PLANTNET_API_KEY=2b10JXfQ0h8ROmaX99KyJY7vu
+    volumes:
+      - ./src:/app/src
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: invasiv
+    volumes:
+      - data:/var/lib/postgresql/data
+      - ./db-script/db-script.sql:/docker-entrypoint-initdb.d/db-script.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  data:
