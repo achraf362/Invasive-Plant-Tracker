@@ -1,4 +1,4 @@
-# README: Setting Up and Running Your Project
+# README: Setting Up and Running The Project "Invasive Plant Tracker"
 
 ## Prerequisites
 
